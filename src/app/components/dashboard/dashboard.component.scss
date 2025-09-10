@@ -1,0 +1,15 @@
+/* Navbar */
+.navbar {
+  border-radius: 8px;
+}
+
+/* Widget cards */
+.widget-card {
+  border-radius: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.widget-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}

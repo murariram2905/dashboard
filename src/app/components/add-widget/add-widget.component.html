@@ -1,0 +1,21 @@
+<div class="modal-backdrop">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content p-4 shadow-lg rounded-3">
+      <h5 class="fw-bold text-primary mb-3">➕ Add New Widget</h5>
+      <form (ngSubmit)="addWidget()">
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Widget Name</label>
+          <input type="text" class="form-control shadow-sm" [(ngModel)]="widgetName" name="widgetName" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Widget Text</label>
+          <textarea class="form-control shadow-sm" [(ngModel)]="widgetText" name="widgetText" required></textarea>
+        </div>
+        <div class="d-flex justify-content-end">
+          <button class="btn btn-success me-2" type="submit">Add</button>
+          <button class="btn btn-secondary" type="button" (click)="closed.emit()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

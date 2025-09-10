@@ -1,0 +1,50 @@
+<!-- Navbar -->
+<nav class="navbar navbar-dark bg-primary shadow-sm px-3">
+  <a class="navbar-brand fw-bold" href="#">🌐 CNAPP Dashboard</a>
+</nav>
+
+<!-- Categories -->
+<div class="container mt-4">
+  <div *ngFor="let category of categories" class="mb-4">
+    
+    <!-- Category title + add button -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h5 class="fw-bold text-dark">{{ category.name }}</h5>
+      <button class="btn btn-sm btn-outline-light bg-primary text-white"
+              (click)="openAddWidget(category.id)">
+        ➕ Add Widget
+      </button>
+    </div>
+
+    <!-- Widgets row -->
+    <div class="row g-3">
+      <div class="col-md-3" *ngFor="let widget of category.widgets">
+        <div class="card widget-card border border-2 border-primary h-100 shadow-sm">
+          <div class="card-body">
+            <h6 class="fw-semibold">{{ widget.name }}</h6>
+            <p class="text-muted small">{{ widget.text }}</p>
+          </div>
+          <div class="card-footer bg-transparent border-0 text-end">
+            <button class="btn btn-sm btn-danger"
+                    (click)="removeWidget(category.id, widget.id)">
+              ✖ Remove
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Empty state -->
+    <div *ngIf="category.widgets.length === 0"
+         class="text-center text-muted fst-italic mt-3">
+      No widgets yet. Click <b>➕ Add Widget</b> to start.
+    </div>
+  </div>
+</div>
+
+<!-- Add Widget Modal -->
+<app-add-widget *ngIf="showAddWidget"
+                [categoryId]="selectedCategoryId!"
+                (widgetAdded)="onWidgetAdded($event)"
+                (closed)="showAddWidget = false">
+</app-add-widget>
